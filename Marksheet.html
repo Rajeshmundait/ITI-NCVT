@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ITI Trainee Marksheet</title>
+    <script>
+        function showMarksheet() {
+            var rollNumber = document.getElementById("roll").value;
+            var year = document.getElementById("year").value;
+
+            if (rollNumber === "00190720003661" && year !== "") {
+                document.getElementById("form-section").style.display = "none";
+                document.getElementById("marksheet-section").style.display = "block";
+
+                document.getElementById("year1").style.display = (year === "1st Year" || year === "All") ? "table-row" : "none";
+                document.getElementById("year2").style.display = (year === "2nd Year" || year === "All") ? "table-row" : "none";
+                document.getElementById("total").style.display = (year === "All") ? "table-row" : "none";
+            } else {
+                alert("Invalid Roll Number or Year!");
+            }
+        }
+    </script>
 </head>
 <body>
     <div style="text-align: center;">
@@ -12,39 +29,55 @@
         <h2>ITI Trainee Marksheet</h2>
     </div>
 
-    <table border="1" width="80%" align="center" cellpadding="10">
-        <tr>
-            <th>Student Name</th>
-            <td>Rajesh Munda</td>
-        </tr>
-        <tr>
-            <th>Father's Name</th>
-            <td>Dhaneshawar Munda</td>
-        </tr>
-        <tr>
-            <th>Trade Name</th>
-            <td>Electrician NSQF</td>
-        </tr>
-        <tr>
-            <th>ITI Name & Address</th>
-            <td>GR20000194-BTTI PVT ITI Bhurkunda, RAMGARH, JHARKHAND 829135</td>
-        </tr>
-        <tr>
-            <th>Roll No.</th>
-            <td>00190720003661</td>
-        </tr>
-        <tr>
-            <th>1st Year Marks</th>
-            <td>505</td>
-        </tr>
-        <tr>
-            <th>2nd Year Marks</th>
-            <td>549</td>
-        </tr>
-        <tr>
-            <th>Total Marks</th>
-            <td>1054</td>
-        </tr>
-    </table>
+    <!-- Form Section -->
+    <div id="form-section" style="text-align: center;">
+        <h3>Enter Roll Number & Select Year</h3>
+        <input type="text" id="roll" placeholder="Enter Roll Number">
+        <select id="year">
+            <option value="">Select Year</option>
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="All">All</option>
+        </select>
+        <button onclick="showMarksheet()">Submit</button>
+    </div>
+
+    <!-- Marksheet Section (Hidden Initially) -->
+    <div id="marksheet-section" style="display: none;">
+        <table border="1" width="80%" align="center" cellpadding="10">
+            <tr>
+                <th>Student Name</th>
+                <td>Rajesh Munda</td>
+            </tr>
+            <tr>
+                <th>Father's Name</th>
+                <td>Dhaneshawar Munda</td>
+            </tr>
+            <tr>
+                <th>Trade Name</th>
+                <td>Electrician NSQF</td>
+            </tr>
+            <tr>
+                <th>ITI Name & Address</th>
+                <td>GR20000194-BTTI PVT ITI Bhurkunda, RAMGARH, JHARKHAND 829135</td>
+            </tr>
+            <tr>
+                <th>Roll No.</th>
+                <td>00190720003661</td>
+            </tr>
+            <tr id="year1">
+                <th>1st Year Marks</th>
+                <td>505</td>
+            </tr>
+            <tr id="year2">
+                <th>2nd Year Marks</th>
+                <td>549</td>
+            </tr>
+            <tr id="total">
+                <th>Total Marks</th>
+                <td>1054</td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
